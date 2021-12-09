@@ -1,29 +1,43 @@
-# README #
+# Java Checkout Service
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This repository will demonstrate how a promotion & checkout service will work.
 
-### What is this repository for? ###
+### Setup ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+#### Install Dependencies
+* Java 11
+* Gradle 7.3.1
 
-### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### Run ###
 
-### Contribution guidelines ###
+./gradlew bootRun
 
-* Writing tests
-* Code review
-* Other guidelines
+### Request sample ###
+curl --location --request POST 'localhost:8080/checkout?productCodes=001,002,003'
+#### response 
+* status 200
+* body 66.78
 
-### Who do I talk to? ###
+curl --location --request POST 'localhost:8080/checkout?productCodes=001,003,001'
+#### response
+* status 200
+* body 36.95
 
-* Repo owner or admin
-* Other community or team contact
+curl --location --request POST 'localhost:8080/checkout?productCodes=001,002,001,003'
+#### response
+* status 200
+* body 73.76
+
+
+curl --location --request POST 'localhost:8080/checkout?productCodes=001,002,001,003dd'
+#### response
+* status 404
+* body
+>{
+"timestamp": "2021-12-09T21:47:41.149+00:00",
+"status": 404,
+"error": "Not Found",
+"path": "/checkout"
+}
+
