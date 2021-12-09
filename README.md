@@ -4,7 +4,7 @@ This repository will demonstrate how a promotion & checkout service will work.
 
 
 ## Design and implementation ##
-The aplication is written using **spring boot**.
+The application is written using **spring boot**.
 It uses **spring web starter** dependency for the **controllers and endpoints**.
 
 It uses the standard layers of a spring boot application:
@@ -13,22 +13,22 @@ It uses the standard layers of a spring boot application:
 * **repository** - for managing data. In this repository it uses an in memory list of products and promotions
 
 
-For promotion appling it uses the **Chain of responsability Design Pattern** so it can add **very easy a lot of other promotions**. Just implement one of the interfaces
-* CartPromotion (which is responsable for promotions at the cart/checkout level: Total amount bigger than XXX, At least XXX items in total, etc)
-* MinimumItemNumberPromotion (which is responsable for promotions at product/item level: 1 item at 50%, buy at least 2 with 10% discount etc)
+For promotion appling it uses the **Chain of responsibility Design Pattern** so it can add **very easy a lot of other promotions**. Just implement one of the interfaces
+* CartPromotion (which is responsible for promotions at the cart/checkout level: Total amount bigger than XXX, At least XXX items in total, etc)
+* MinimumItemNumberPromotion (which is responsible for promotions at product/item level: 1 item at 50%, buy at least 2 with 10% discount etc)
 
-This makes easy to **add some other strategies** like freeshiping by implementing the root interface BasePromotion
+This makes easy to **add some other strategies** like free shipping by implementing the root interface BasePromotion
 
 The **product** contains the required fields: code, name, price.
 
 Also when looking for an non existing product, the service will throw a 404 exception using the exception added in the exceptions package.
 
-The promotions should be added in a specified order. First the item level ones and after that the ones at the checkout level. 
-Otherwise there can be made this sort in the code based on the class of the promotion object. 
+The promotions should be added in a specified order. First the item level ones and after that the ones at the checkout level.
+Otherwise there can be made this sort in the code based on the class of the promotion object.
 
 ## Setup ##
 
-### Install Dependencie
+### Install Dependencies
 * Java 11
 * Gradle 7.3.1
 
@@ -73,4 +73,3 @@ curl --location --request POST 'localhost:8080/checkout?productCodes=001,002,001
 "error": "Not Found",
 "path": "/checkout"
 }
-
