@@ -37,7 +37,7 @@ Otherwise there can be made this sort in the code based on the class of the prom
 
 ./gradlew bootRun
 
-### Request sample ###
+## Request samples ##
 
 ### Get all products
 curl --location --request GET 'localhost:8080/products'
