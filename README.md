@@ -27,6 +27,7 @@ The promotions should be added in a specified order. First the item level ones a
 Otherwise there can be made this sort in the code based on the class of the promotion object.
 
 ## Setup ##
+* Clone the repository
 
 ### Install Dependencies
 * Java 11
